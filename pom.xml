@@ -58,6 +58,11 @@
             <version>21.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.graphql-java-generator</groupId>
+            <artifactId>graphql-maven-plugin</artifactId>
+            <version>2.3.2</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.graphql-java-generator</groupId>-->
 <!--            <artifactId>graphql-maven-plugin-logic</artifactId>-->
@@ -69,12 +74,12 @@
             <artifactId>graphql-java-runtime</artifactId>
             <version>1.18</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.graphql-java-generator</groupId>-->
-<!--            <artifactId>graphql-java-client-dependencies</artifactId>-->
-<!--            <version>2.3.2</version>            -->
-<!--            <type>pom</type>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.graphql-java-generator</groupId>
+            <artifactId>graphql-java-client-dependencies</artifactId>
+            <version>2.3.2</version>
+            <type>pom</type>
+        </dependency>
 
     </dependencies>
 

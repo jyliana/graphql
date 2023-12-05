@@ -2,6 +2,7 @@ package com.example.graphql;
 
 import com.netflix.graphql.dgs.DgsQueryExecutor;
 import org.apache.commons.lang3.StringUtils;
+import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +19,7 @@ class FakeHelloDataResolverTest {
 
   @Test
   void testOneHello() {
-    String query = """
+    @Language("GraphQL") var query = """
             {
                oneHello {
                  randomNumber
@@ -36,7 +37,7 @@ class FakeHelloDataResolverTest {
 
   @Test
   void testAllHellos() {
-    String query = """
+    @Language("GraphQL") var query = """
             {
                allHellos {
                  randomNumber

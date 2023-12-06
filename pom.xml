@@ -46,11 +46,11 @@
             <version>8.1.1</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java-kickstart</groupId>-->
-        <!--            <artifactId>graphql-spring-boot-starter</artifactId>-->
-        <!--            <version>15.0.0</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.graphql-java-kickstart</groupId>
+            <artifactId>graphql-java-tools</artifactId>
+            <version>13.1.1</version>
+        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.graphql</groupId>-->
@@ -59,9 +59,9 @@
         <!--        </dependency>-->
 
         <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-java-extended-scalars</artifactId>
-            <version>21.0</version>
+            <groupId>com.netflix.graphql.dgs</groupId>
+            <artifactId>graphql-dgs-extended-scalars</artifactId>
+            <version>8.1.1</version>
         </dependency>
 
         <dependency>
@@ -107,6 +107,13 @@
                             </schemaPaths>
                             <packageName>com.example.graphql.codegen</packageName>
                             <addGeneratedAnnotation>true</addGeneratedAnnotation>
+<!--                            <subPackageNameClient>com.example.graphql.codegen</subPackageNameClient>-->
+<!--                            <generateClientApi>true</generateClientApi>-->
+                            <typeMapping>
+                                <Date>java.time.LocalDate</Date>
+                                <NonNegativeInt>java.lang.Integer</NonNegativeInt>
+                                <Url>java.net.URL</Url>
+                            </typeMapping>
                         </configuration>
                     </execution>
                 </executions>
@@ -120,6 +127,7 @@
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>add-source</goal>
+                            <goal>add-test-source</goal>
                         </goals>
                         <configuration>
                             <sources>

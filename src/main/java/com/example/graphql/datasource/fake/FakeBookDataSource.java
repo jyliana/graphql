@@ -29,7 +29,7 @@ public class FakeBookDataSource {
       var released = ReleaseHistory.newBuilder()
               .printedEdition(faker.bool().bool())
               .releasedCountry(faker.country().name())
-              .year(faker.number().numberBetween(1959, 2023))
+              .year(faker.number().numberBetween(2000, 2023))
               .build();
       var book = Book.newBuilder().author(author)
               .publisher(faker.book().publisher())

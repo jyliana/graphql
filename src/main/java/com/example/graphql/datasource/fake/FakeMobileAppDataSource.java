@@ -1,11 +1,12 @@
 package com.example.graphql.datasource.fake;
 
-import com.example.graphql.codegen.types.Address;
-import com.example.graphql.codegen.types.Author;
-import com.example.graphql.codegen.types.MobileApp;
-import com.example.graphql.codegen.types.MobileAppCategory;
+import com.example.graphql.types.Address;
+import com.example.graphql.types.Author;
+import com.example.graphql.types.MobileApp;
+import com.example.graphql.types.MobileAppCategory;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import net.datafaker.Faker;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +25,12 @@ import java.util.stream.IntStream;
 public class FakeMobileAppDataSource {
 
   private Faker faker;
-  private List<MobileApp> booklist;
+  @Getter
+  private List<MobileApp> mobileAppList;
 
   @PostConstruct
   private void createRandomMobileAppList() throws RuntimeException {
-    booklist = IntStream.range(0, 20).mapToObj(h -> {
+    mobileAppList = IntStream.range(0, 20).mapToObj(h -> {
       var addresses = new ArrayList<Address>();
       var author = Author.newBuilder().addresses(addresses)
               .name(faker.book().author())
@@ -69,10 +71,6 @@ public class FakeMobileAppDataSource {
       throw new RuntimeException("something happened");
     }
 
-  }
-
-  public List<MobileApp> getMobileAppList() {
-    return booklist;
   }
 
   private List<String> randomMobileAppPlatform() {

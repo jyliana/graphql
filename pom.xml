@@ -42,7 +42,6 @@
         <dependency>
             <groupId>com.netflix.graphql.dgs</groupId>
             <artifactId>graphql-dgs-spring-boot-starter</artifactId>
-            <scope>compile</scope>
             <version>8.1.1</version>
         </dependency>
 
@@ -52,11 +51,18 @@
             <version>13.1.1</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.graphql</groupId>-->
-        <!--            <artifactId>spring-graphql</artifactId>-->
-        <!--            <version>1.2.4</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.netflix.graphql.dgs.codegen</groupId>
+            <artifactId>graphql-dgs-codegen-client-core</artifactId>
+            <version>5.1.17</version>
+            <scope>provided</scope>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.graphql</groupId>-->
+<!--            <artifactId>spring-graphql</artifactId>-->
+<!--            <version>1.2.4</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.netflix.graphql.dgs</groupId>
@@ -105,10 +111,9 @@
                             <schemaPaths>
                                 <param>src/main/resources</param>
                             </schemaPaths>
-                            <packageName>com.example.graphql.codegen</packageName>
+                            <packageName>com.example.graphql</packageName>
+                            <generateClientApi>true</generateClientApi>
                             <addGeneratedAnnotation>true</addGeneratedAnnotation>
-<!--                            <subPackageNameClient>com.example.graphql.codegen</subPackageNameClient>-->
-<!--                            <generateClientApi>true</generateClientApi>-->
                             <typeMapping>
                                 <Date>java.time.LocalDate</Date>
                                 <NonNegativeInt>java.lang.Integer</NonNegativeInt>

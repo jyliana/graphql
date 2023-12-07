@@ -1,7 +1,10 @@
 package com.example.graphql.datasource.fake;
 
-import com.example.graphql.codegen.types.Hello;
+import com.example.graphql.types.Hello;
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +16,16 @@ import java.util.stream.IntStream;
 public class FakeHelloDataSource {
 
   private Faker faker;
+  @Getter
+  @Setter
+  private List<Hello> helloList;
 
-  private List<Hello> createRandomList() {
-    return IntStream.range(0, 20).mapToObj(h -> Hello.newBuilder()
+  @PostConstruct
+  public void createRandomList() {
+    helloList = IntStream.range(0, 20).mapToObj(h -> Hello.newBuilder()
             .randomNumber(faker.random().nextInt(5000))
             .text(faker.company().industry())
             .build()
     ).toList();
-  }
-
-  public List<Hello> getHelloList() {
-    return createRandomList();
   }
 }

@@ -1,8 +1,8 @@
 package com.example.graphql.component.fake;
 
-import com.example.graphql.codegen.DgsConstants;
-import com.example.graphql.codegen.types.MobileApp;
-import com.example.graphql.codegen.types.MobileAppFilter;
+import com.example.graphql.DgsConstants;
+import com.example.graphql.types.MobileApp;
+import com.example.graphql.types.MobileAppFilter;
 import com.example.graphql.datasource.fake.FakeMobileAppDataSource;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsQuery;

@@ -1,8 +1,9 @@
 package com.example.graphql.datasource.fake;
 
-import com.example.graphql.codegen.types.*;
+import com.example.graphql.types.*;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import net.datafaker.Faker;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,11 +17,12 @@ import java.util.stream.IntStream;
 public class FakeBookDataSource {
 
   private Faker faker;
-  private List<Book> booklist;
+  @Getter
+  private List<Book> bookList;
 
   @PostConstruct
   private void createRandomBookList() {
-    booklist = IntStream.range(0, 20).mapToObj(h -> {
+    bookList = IntStream.range(0, 20).mapToObj(h -> {
       var addresses = new ArrayList<Address>();
       var author = Author.newBuilder().addresses(addresses)
               .name(faker.book().author())
@@ -49,9 +51,5 @@ public class FakeBookDataSource {
       }
       return book;
     }).toList();
-  }
-
-  public List<Book> getBookList() {
-    return booklist;
   }
 }

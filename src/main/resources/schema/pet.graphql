@@ -1,8 +1,10 @@
+"""This is a simple documentation"""
 enum PetFoodType{
     HERBIVORE, CARNIVORE, OMNIVORE
 }
 
 interface Pet{
+    """Pet's name, make it <strong>cute</strong>"""
     name: String!
     food: PetFoodType
     breed: String
@@ -21,4 +23,8 @@ type Cat implements Pet{
     food: PetFoodType
     breed: String
     registry: String
+}
+
+input PetFilter{
+    petType: String
 }

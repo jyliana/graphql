@@ -1,0 +1,5 @@
+type Stock{
+    symbol: String!
+    price: Float!
+    lastTradeDateTime: DateTime!
+}

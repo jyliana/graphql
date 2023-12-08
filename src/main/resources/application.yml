@@ -6,8 +6,19 @@ spring:
   main:
     banner-mode: OFF
 
-dgs:
-  graphql:
-    schema-locations:
-      - classpath*:/schema/**/*.graphql*
-      - classpath*:/schema/**/*.gql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=problemz
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+
+
+#dgs:
+#  graphql:
+#    schema-locations:
+#      - classpath*:/schema/**/*.graphql*
+#      - classpath*:/schema/**/*.gql

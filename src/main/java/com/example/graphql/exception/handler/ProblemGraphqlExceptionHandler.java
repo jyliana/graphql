@@ -23,7 +23,6 @@ public class ProblemGraphqlExceptionHandler implements DataFetcherExceptionHandl
               .message(exception.getMessage())
               .path(handlerParameters.getPath())
               .errorDetail(new ProblemErrorDetail())
-//              .errorType(ErrorType.UNAUTHENTICATED)
               .build();
 
       var result = DataFetcherExceptionHandlerResult.newResult()

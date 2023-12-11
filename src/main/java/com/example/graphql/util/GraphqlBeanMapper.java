@@ -9,7 +9,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.time.ZoneOffset;
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class GraphqlBeanMapper {
 
@@ -34,7 +36,6 @@ public class GraphqlBeanMapper {
     var createDateTime = original.getCreationTimestamp().atOffset(ZONE_OFFSET);
     var author = mapToGraphql(original.getCreatedBy());
     var solutions = original.getSolutions().stream()
-//            .sorted(Comparator.comparing(Solutionz::getCreationTimestamp).reversed())
             .map(GraphqlBeanMapper::mapToGraphql)
             .toList();
     var tagList = List.of(original.getTags().split(","));
@@ -78,4 +79,15 @@ public class GraphqlBeanMapper {
             .build();
   }
 
+
+  public static Problemz mapToEntity(ProblemCreateInput input, Userz author) {
+    return Problemz.builder()
+            .title(input.getTitle())
+            .createdBy(author)
+            .content(input.getContent())
+            .id(UUID.randomUUID())
+            .solutions(Collections.emptyList())
+            .tags(String.join(",", input.getTags()))
+            .build();
+  }
 }

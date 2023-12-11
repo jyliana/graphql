@@ -15,8 +15,6 @@ spring:
       ddl-auto: none
     show-sql: false
 
-
-
 #dgs:
 #  graphql:
 #    schema-locations:

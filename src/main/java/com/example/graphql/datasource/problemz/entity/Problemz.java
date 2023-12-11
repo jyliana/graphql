@@ -21,6 +21,7 @@ public class Problemz {
   private String tags;
 
   @OneToMany(mappedBy = "problemz")
+  @OrderBy("creationTimestamp desc")
   private List<Solutionz> solutions;
 
   @ManyToOne

@@ -27,11 +27,11 @@ type Mutation{
     deleteHello(number: Int!): Int
 
     userCreate(user: UserCreateInput!): UserResponse!
-    userLogin(use: UserLoginInput!): UserResponse!
+    userLogin(user: UserLoginInput!): UserResponse!
     userActivation(user: UserActivationInput!): UserActivationResponse!
     problemCreate(problem: ProblemCreateInput!): ProblemResponse!
-    solutionCreate(solution: SolutionCreateInput!): SolutionResponse!
-    solutionVote(vote:SolutionVoteInput!): SolutionResponse!
+    solutionCreate(newSolution: SolutionCreateInput!): SolutionResponse!
+    solutionVote(newVote:SolutionVoteInput!): SolutionResponse!
 }
 
 type Subscription{

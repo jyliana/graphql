@@ -1,5 +1,6 @@
 package com.example.graphql.service.command;
 
+import com.example.graphql.datasource.problemz.entity.Userz;
 import com.example.graphql.datasource.problemz.entity.UserzToken;
 import com.example.graphql.datasource.problemz.repository.UserzRepository;
 import com.example.graphql.datasource.problemz.repository.UserzTokenRepository;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -44,4 +46,12 @@ public class UserzCommandService {
     return userzTokenRepository.save(userzToken);
   }
 
+  public Userz createUserz(Userz userz) {
+    return userzRepository.save(userz);
+  }
+
+  public Optional<Userz> activateUserz(String username, boolean isActive) {
+    userzRepository.activateUser(username, isActive);
+    return userzRepository.findByUsernameIgnoreCase(username);
+  }
 }

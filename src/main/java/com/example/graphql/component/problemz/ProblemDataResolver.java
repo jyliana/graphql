@@ -39,8 +39,9 @@ public class ProblemDataResolver {
   }
 
   @DgsMutation(field = DgsConstants.MUTATION.ProblemCreate)
-  public ProblemResponse createProblem(@RequestHeader(name = "authToken", required = true) String authToken,
+  public ProblemResponse createProblem(@RequestHeader(name = "authToken") String authToken,
                                        @InputArgument(name = "problem") ProblemCreateInput input) {
+
     var userz = userService.findUserzByAuthToken(authToken);
     var problemz = mapToEntity(input, userz);
     var created = commandService.createProblem(problemz);
@@ -52,6 +53,6 @@ public class ProblemDataResolver {
 
   @DgsSubscription(field = DgsConstants.SUBSCRIPTION.ProblemAdded)
   public Flux<Problem> subscribeProblemAdded() {
-    return null;
+    return commandService.problemzFlux().map(GraphqlBeanMapper::mapToGraphql);
   }
 }

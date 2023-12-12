@@ -13,6 +13,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import static com.example.graphql.util.HashUtil.hashBcrypt;
+
 public class GraphqlBeanMapper {
 
   private static final PrettyTime PRETTY_TIME = new PrettyTime();
@@ -90,4 +92,27 @@ public class GraphqlBeanMapper {
             .tags(String.join(",", input.getTags()))
             .build();
   }
+
+  public static Solutionz mapToEntity(SolutionCreateInput input, Userz author, Problemz problemz) {
+    return Solutionz.builder()
+            .id(UUID.randomUUID())
+            .category(input.getCategory().name())
+            .content(input.getContent())
+            .createdBy(author)
+            .problemz(problemz)
+            .build();
+  }
+
+  public static Userz mapToEntity(UserCreateInput original) {
+    return Userz.builder()
+            .id(UUID.randomUUID())
+            .hashedPassword(hashBcrypt(original.getPassword()))
+            .username(original.getUsername())
+            .email(original.getEmail())
+            .displayName(original.getDisplayName())
+            .avatar(original.getAvatar())
+            .active(true)
+            .build();
+  }
+
 }
